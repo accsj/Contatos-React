@@ -25,7 +25,7 @@ export default function HomePage() {
                     'X-CSRFToken': csrfToken
                 }
             };
-            await axios.post('http://localhost:8000/cadastrar/', contato, config);
+            await axios.post('https://contatos-django.onrender.com/cadastrar/', contato, config);
             alert('Contato cadastrado com sucesso!')
             setContato({ nome: '', telefone: '', email: '' });
             fetchContatos();
@@ -36,7 +36,7 @@ export default function HomePage() {
 
     const fetchContatos = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/listar/');
+            const response = await axios.get('https://contatos-django.onrender.com/listar/');
             setContatosList(response.data);
         } catch (error) {
             console.error('Erro ao obter a lista de contatos:', error);
@@ -55,7 +55,7 @@ export default function HomePage() {
                     'X-CSRFToken': csrfToken
                 }
             };
-            await axios.delete(`http://localhost:8000/deletar/${id}`, config);
+            await axios.delete(`https://contatos-django.onrender.com//deletar/${id}`, config);
             alert('Contato excluído com sucesso!');
             fetchContatos();
         } catch (error) {
@@ -75,7 +75,7 @@ export default function HomePage() {
                     'X-CSRFToken': csrfToken
                 }
             };
-            await axios.put(`http://localhost:8000/alterar/${id}`, { nome: editedName }, config);
+            await axios.put(`https://contatos-django.onrender.com/alterar/${id}`, { nome: editedName }, config);
             alert('Nome do contato alterado com sucesso!');
             setEditingId(null);
             fetchContatos();
